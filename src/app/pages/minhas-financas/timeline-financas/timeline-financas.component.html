@@ -1,0 +1,42 @@
+<div class="timeline">
+    <div class="row">
+        <div class="col-auto">
+            <h2>Histórico</h2>
+        </div>
+    </div>
+    <div *ngFor="let item of dataSource" class="timeline-event">
+        <div class="timeline-point-track-container">
+            <div class="timeline-track"></div>
+            <div class="timeline-point">
+                <div *ngIf="item.realizado && item.pago" class="done-container bg-success">
+                    <mat-icon >done</mat-icon>
+                </div>
+                <div *ngIf="!item.realizado || !item.pago" class="done-container bg-warning">
+                    <mat-icon >error</mat-icon>
+                </div>
+            </div>
+            <div class="timeline-track"></div>
+        </div>
+        <div class="timeline-content">
+            <div class="date me-3">
+                <h4 class="p-0 m-0">{{item.data}}</h4>
+                <p>{{item.time}}</p>
+            </div>
+            <mat-divider class="me-4" vertical></mat-divider>
+            <div class="client-info">
+                <h3 class="p-0 m-0">{{item.title}}</h3>
+                <p class="p-0 m-0">{{item.cpfCliente | mask: '000.000.000-00'}}</p>
+            </div>
+            <mat-divider vertical class="ms-3 me-3"></mat-divider>
+            <div class="valor">
+                <p>Valor: R$ {{item.valorConsulta}},00</p>
+            </div>
+            <mat-divider vertical class="me-3 ms-3"></mat-divider>
+            <div class="warnings">
+                <p *ngIf="!item.pago" class="text-warning"><mat-icon>error</mat-icon> Pagamento não realizado</p>
+                <p *ngIf="!item.realizado" class="text-warning"><mat-icon>error</mat-icon> Consulta não realizada</p>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,37 @@
+.content{
+    position: relative;
+    input{
+        width: 100%;
+        padding: 1rem 0.5rem;
+        border: none;
+        outline: none ;
+        border-bottom: 1px solid rgb(238, 238, 238);
+        position: relative;
+    }
+}
+
+.content-search::-webkit-scrollbar{
+    display: none;
+}
+.content-search{
+    width: 100%;
+    max-height: 100px;
+    background-color: #fff;
+    position: absolute;
+    z-index: 300;
+    -webkit-box-shadow: 2px 18px 22px -10px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 18px 22px -10px rgba(0,0,0,0.75);
+    box-shadow: 2px 18px 22px -10px rgba(0,0,0,0.75);
+    overflow-y: auto;
+    border-radius: 0 0 5px 5px;
+
+
+    .item:hover{
+        background: #e4e4e4;
+        cursor: pointer;
+    }
+    .item{
+        padding: 0.5rem;
+        width: 100%;
+    }
+}

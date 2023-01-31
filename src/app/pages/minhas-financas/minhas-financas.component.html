@@ -1,0 +1,66 @@
+<app-toolbar [drawer]="drawer"></app-toolbar>
+
+<mat-drawer-container mode="over">
+  <mat-drawer #drawer>
+    <app-menu></app-menu>
+  </mat-drawer>
+  <section>  
+    <div class="container-full p-3">
+      <div class="row p-0 m-0 mb-4">
+        <h1 class="m-0 p-0">Minhas finanças</h1>
+        <p class="m-0 p-0 text-secondary">Acompanhe suas finanças e movimentações</p>
+      </div>
+  
+      <mat-divider></mat-divider>
+      <div class="row justify-content-center p-0 m-0">
+        <div class="col-auto d-flex align-items-center">
+          <button (click)="getBeforeMonth()" color="primary" mat-icon-button><mat-icon>arrow_left_ios</mat-icon></button>
+          <h3 class="p-0 m-0">{{months[month]}} de {{year}}</h3>
+          <button (click)="getAfterMonth()" [disabled]="month >= atualMonth && year >= atualYear" color="primary" mat-icon-button><mat-icon>arrow_right_ios</mat-icon></button>
+        </div>
+      </div>
+      <mat-divider></mat-divider>
+  
+      <div class="cards">
+        <div class="row mt-4">
+          <div class="col-auto mb-2">
+            <div class="card p-3 mb">
+              <p class="text-secondary">Ganhos de {{months[month - 1]}}</p>
+              <h1 class="m-0 p-0">
+                <mat-icon>paid</mat-icon>
+                R$ {{ivoicingBeforeMonth}}
+              </h1>
+            </div>
+          </div>
+          <div class="col-auto">
+            <div class="card p-3">
+              <p class="text-secondary">Ganhos de {{months[month]}}</p>
+              <div class="options d-flex align-items-center">
+                <h1 class="m-0 p-0 me-5">
+                  <mat-icon>paid</mat-icon>
+                  R$ {{invoicingAtualMonthPercent}}
+                </h1>
+  
+                <div class="percent d-flex align-items-center p-1">
+                  <mat-icon *ngIf="atualMonthPercent > 0" class="me-2">trending_up</mat-icon>
+                  <mat-icon *ngIf="atualMonthPercent < 0" class="me-2">trending_down</mat-icon>
+                  <h4 class="m-0 p-0">{{atualMonthPercent}}%</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <div class="card myChart p-3 mt-3" >
+        <canvas #myChart ></canvas>
+      </div>
+  
+      <app-timeline-financas [dataSource]="dataSourceTimeline"></app-timeline-financas>
+    </div>
+  
+  </section>  
+  <div class="mobile">
+    <app-menu></app-menu>
+  </div>
+</mat-drawer-container>

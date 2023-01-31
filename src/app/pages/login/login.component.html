@@ -1,0 +1,32 @@
+<div [formGroup]="form" class="container-full">
+    <img src="https://i.ibb.co/NNNZ6J3/LOGO.png" class="mb-4" alt="">
+
+    <div class="form mb-3" >
+        <div *ngIf="error.error">
+            <p class="text-danger m-0">{{error.message}}</p>
+        </div>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+            </div>
+            <input formControlName="email" placeholder="E-mail" type="text" class="form-control">
+        </div>
+        
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><fa-icon [icon]="faLock"></fa-icon></span>
+            </div>
+            <input formControlName="password" type="password" class="form-control" placeholder="Senha">
+        </div>
+        <a class="mb-5" href="#">Esqueci meu login ou senha</a>
+
+        <div class="col-12 mt-3">
+            <button (click)="checkLogin()" style="width: 100%;" class="btn btn-success">Entrar</button>
+        </div>
+
+        <div class="col-12 mt-5" style="justify-content: center;">
+            <h3 >Ainda não tem uma conta?</h3>
+            <button routerLink="/sign-out" style="width: 100%;" class="btn btn-light">Criar uma conta agora</button>
+        </div>
+    </div>
+</div>

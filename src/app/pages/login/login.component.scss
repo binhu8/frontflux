@@ -1,0 +1,21 @@
+.container-full{
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        width: 70px;
+        border-radius: 3px;
+    }
+
+    a{
+        text-decoration: none;
+        color: #333;
+        font-size: 12px;
+    }
+    a:hover{
+        color: #3634a5;
+    }
+}

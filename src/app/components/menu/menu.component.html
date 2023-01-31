@@ -1,0 +1,31 @@
+<section class="web">
+    
+    <div class="items-menu-container">
+        <div routerLinkActive="active" [routerLink]="item.routerLink" *ngFor="let item of itensMenu" class="item">
+           <mat-icon>{{item.icon}}</mat-icon> <!-- <p class="p-0 m-0">{{item.name}}</p> -->
+        </div>
+    </div>
+</section>
+
+<section class="mobile">
+    <div class="container-menu">
+        <div routerLinkActive="active" [routerLink]="item.routerLink" *ngFor="let item of itensMenu" class="item">
+            <mat-icon *ngIf="item.mobile" >{{item.icon}}</mat-icon>
+        </div>
+    </div>
+</section>
+
+<!-- <section>
+    <div class="header">
+        <app-profile></app-profile>
+    </div>
+    <ul>
+        <li [routerLink]="item.routerLink"  routerLinkActive="active" *ngFor="let item of itensMenu">
+            <fa-icon [icon]="item.fasIcon"></fa-icon>
+            <span>{{item.name}}</span>
+        </li> 
+    </ul>
+
+    <button (click)="logout()" class="btn btn-danger">Sair</button>
+</section> -->
+

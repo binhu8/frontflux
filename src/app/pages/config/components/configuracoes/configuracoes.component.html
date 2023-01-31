@@ -1,0 +1,156 @@
+<section>
+    <div class="row">
+        <h2 class="mb-1">Meu perfil</h2>
+        <p class="text-secondary" style="font-size: 12px;">Atualize ou visualize suas informações pessoais</p>
+    </div>
+
+    <mat-divider class="mt-3 mb-4"></mat-divider>
+
+
+    <div class="row">
+        <div class="col-auto">
+            <input type="file" (change)="inputFileChange($event)">
+        </div>
+        <div class="col-auto">
+            <img [src]="imageUrl" alt="">
+        </div>
+        <div class="col-auto m-1">
+            <mat-form-field appearance="outline">
+                <mat-label>Nome</mat-label>
+                <input matInput [readonly]="readonly" [(ngModel)]="data.nome" type="text">
+            </mat-form-field>
+        </div>
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>Sobrenome</mat-label>
+                <input matInput [readonly]="readonly" [(ngModel)]="data.sobrenome" type="text" >
+            </mat-form-field>
+        </div>
+    </div>
+    <mat-divider class=" mb-4"></mat-divider>
+    <div class="row">
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>Data de nascimento</mat-label>
+                <input matInput mask="00/00/0000" [readonly]="readonly" [(ngModel)]="data.dataNascimento" type="text">
+            </mat-form-field>
+        </div>
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>CPF</mat-label>
+                <input [readonly]="true" [(ngModel)]="data.cpf" mask="000.000.000-00" type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>CRP</mat-label>
+                <input [readonly]="true" [(ngModel)]="data.crp" mask="00/0*" type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>Chave Pix</mat-label>
+                <input [readonly]="readonly" [(ngModel)]="data.chavePix" type="text" matInput>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <mat-divider class=" mb-5"></mat-divider>
+
+    
+
+    
+
+    <div class="row">
+        <h2 class="mb-1">Meu Endereço</h2>
+        <p class="text-secondary" style="font-size: 12px;">Atualize ou visualize suas informações de endereço</p>
+    </div>
+
+    <mat-divider class="mt-2 mb-4"></mat-divider>
+    
+    <div class="row">
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>CEP</mat-label>
+                <input #cep (blur)="getCep(cep.value)" mask="00000-000" [readonly]="readonly" [(ngModel)]="data.endereco.cep" type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>Logradouro</mat-label>
+                <input [readonly]="readonly" [(ngModel)]="data.endereco.logradouro" type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>Número</mat-label>
+                <input [readonly]="readonly" [(ngModel)]="data.endereco.numero" type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>Complemento</mat-label>
+                <input [readonly]="readonly" [(ngModel)]="data.endereco.complemento" type="text" matInput>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="row">
+
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>Bairro</mat-label>
+                <input [readonly]="readonly" [(ngModel)]="data.endereco.bairro" type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>Cidade</mat-label>
+                <input [readonly]="readonly" [(ngModel)]="data.endereco.localidade" type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>Estado</mat-label>
+                <input [readonly]="readonly" [(ngModel)]="data.endereco.uf" type="text" matInput>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <mat-divider class="mt-4 mb-5"></mat-divider>
+
+    <div class="row">
+        <h2 class="mb-1">Minha conta</h2>
+        <p class="text-secondary" style="font-size: 12px;">Atualize ou visualize suas informações da sua conta</p>
+    </div>
+
+    <mat-divider class="mt-3 mb-4"></mat-divider>
+
+    <div class="row">
+
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input [readonly]="readonly" [(ngModel)]="data.email" type="text" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-auto">
+            <mat-form-field appearance="outline">
+                <mat-label>Senha</mat-label>
+                <input [readonly]="readonly" [(ngModel)]="data.senha" [type]="type" matInput>
+                <mat-icon (click)="changeVisibility()" matSuffix>{{visibility}}</mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <div class="mt-5 mb-3 row">
+        <div class="col-auto">
+            <button *ngIf="readonly" [disabled]="!readonly"  (click)="readonly = false" class="btn btn-primary">Editar</button>
+            <button *ngIf="!readonly" [disabled]="readonly"  (click)="readonly = true" class="btn btn-danger">Cancelar</button>
+        </div>
+        <div class="col-auto ms-3">
+            <button (click)="updateUser()" [disabled]="readonly" class="btn btn-success">Salvar</button>
+        </div>
+    </div>
+    
+</section>

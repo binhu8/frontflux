@@ -1,0 +1,124 @@
+<app-toolbar [drawer]="drawer"></app-toolbar>
+
+<mat-drawer-container autosize>
+    <mat-drawer #drawer mode="over">
+       <app-menu></app-menu>
+    </mat-drawer>
+    <div class="d-flex section">
+        <div class="container-calendar">
+            <full-calendar [options]="calendarOptions" ></full-calendar>
+        </div>
+        
+        <div *ngIf="showModalEvent" #teste class=" event card p-2" >
+            <span class="text-secondary">{{form.value.data}} às {{form.value.time}}</span>
+            <div class="row mt-2">
+                <div class="col-auto">
+                    <p class="text-success">Participante: <span class="text-primary">{{form.value.title}}</span></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <p class="text-success">Reunião link: <a [href]="form.value.meet">{{form.value.meet}}</a></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-auto">
+                    <button (click)="showModalEvent = false" mat-button>Fechar</button>
+                </div>
+                <div class="col-auto">
+                    <button (click)="deleteEvent(form.value._id)" mat-button color="warn">Excluir</button>
+                </div>
+            </div>
+        </div>
+    
+        <div *ngIf="showNewEvent" class="new-event-container">
+            
+            <div  #newEvent class="new-event card" [formGroup]="form">
+                <app-input-search 
+                    [valorConsulta]="form.controls.valorConsulta"
+                    [crp]="form.controls.crp"
+                    [cpfCliente]="form.controls.cpfCliente"
+                    [title]="form.controls.title">
+                </app-input-search>
+    
+                <div class="content p-2">
+                    <div class="row mt-2">
+                        <div class="col-auto">
+                            <mat-icon>person</mat-icon>
+                        </div>
+                        <div class="col-auto d-flex align-items-center">
+                            <div *ngIf="!form.value.title">
+                                Selecione
+                            </div>
+                            
+                            <input *ngIf="form.value.title" readonly type="text" formControlName="title">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-2 d-flex align-items-center">
+                            <mat-icon>event</mat-icon>
+                        </div>
+                        <div class="col-auto d-flex align-items-center">
+                            <input readonly type="text" formControlName="data">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-2 d-flex align-items-center">
+                            <mat-icon>schedule</mat-icon>
+                        </div>
+                        <div class="col-auto d-flex align-items-center">
+                            <input  type="text" formControlName="time">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-2 d-flex align-items-center">
+                            <mat-icon>paid</mat-icon>
+                        </div>
+                        <div class="col-auto d-flex align-items-center">
+                            <input  type="text" formControlName="valorConsulta">
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-auto">
+                            <mat-slide-toggle (change)="toggleButton($event.checked)" color="primary">Repetir Evento</mat-slide-toggle>
+                        </div>
+                    </div>
+                    <div class="row mt-3" *ngIf="toggle">
+                        <div class="col-auto">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Quando</mat-label>
+                                <mat-select  formControlName="repeat">
+                                    <mat-option  *ngFor="let option of selectRepeatOptions " [value]="option.value">
+                                        {{option.viewValue}}
+                                    </mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+    
+                    <div class="row " *ngIf="toggle">
+                        <div class="col-auto">
+                            <mat-form-field style="width: 100%;" appearance="outline">
+                                <mat-label>Até</mat-label>
+                                <input (dateChange)="setFinalDate()" matInput  formControlName="finalDate" [matDatepicker]="picker">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker #picker></mat-datepicker>
+                            </mat-form-field> 
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-auto">
+                            <button (click)="setAgenda()" mat-flat-button color="primary">Agendar</button>
+                        </div>
+                        <div class="col-auto">
+                            <button (click)="closeEventModal()" mat-flat-button >Fechar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobile">
+        <app-menu></app-menu>
+    </div>
+</mat-drawer-container>

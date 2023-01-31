@@ -1,0 +1,29 @@
+<section>
+    <div class="name me-2">
+       <div class="nome"> <p class="p-0 m-0">{{response.nome}} {{response.sobrenome}}</p></div>
+       <div class="crp"><p class="p-0 m-0">CRP: {{response.crp | mask: "00/0*"}}</p></div>        
+    </div>
+    <div style="cursor: pointe;" [matMenuTriggerFor]="menu" class="initial-name-container">
+        <div class="initial-name-background">
+            <img [src]="response.perfilImage.url">
+        </div>
+    </div>
+    <div class="arrow-down">
+        <mat-icon [matMenuTriggerFor]="menu" style="color: #747474;">keyboard_arrow_down</mat-icon>
+    </div>
+</section>
+
+<mat-menu #menu="matMenu">
+    <button routerLink="/configuracoes" mat-menu-item>
+        <mat-icon>manage_accounts</mat-icon>
+        Minha conta
+    </button>
+    <!-- <button mat-menu-item>
+        <mat-icon>lock</mat-icon>
+        Politica de privacidade
+    </button> -->
+    <button (click)="logout()" mat-menu-item class="text-danger">
+        <mat-icon>logout</mat-icon>
+        Sair
+    </button>
+</mat-menu>

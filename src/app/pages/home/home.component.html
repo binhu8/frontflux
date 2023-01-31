@@ -1,0 +1,115 @@
+
+<app-toolbar [menuItems]="itemsMenu"></app-toolbar>
+
+<mat-drawer-container>
+    <mat-drawer mode="side" opened>
+        <app-menu></app-menu>
+    </mat-drawer>
+
+
+    <div class="web">
+        <div class="display">
+            <app-table ></app-table>
+        </div>
+        <div class="container-events">
+            <div class="header p-2">
+                <div class="title">
+                    <p class="p-0 m-0">Consultas</p>
+                    <h1 class="p-0 m-0"> {{atualDay}} de {{nameMonth[atualMonth]}}</h1>
+                </div>
+                <div class="icon"></div>
+            </div>
+            <div class="events">
+                <div *ngFor="let element of dataSource" class="event">
+                    <div class="flipper">
+                        <div class="front">
+                            <div class="title-time">
+                                <h2 class="p-0 m-0">{{element.title}}</h2>
+                                <p class="text-secondary p-0 m-0">{{element.time}}</p>
+                            </div>
+                            <img [src]="element.perfilImage.url">
+                        </div>
+                        <div class="back">
+                                <div class="items">
+                                    <div class="row">
+                                        <div class="col-auto">
+                                            <button matTooltip="Entrar na chamada" mat-icon-button>
+                                                <mat-icon>call</mat-icon>
+                                            </button>
+                                        </div>
+                                        <div  class="col-auto">
+                                            <button matTooltip="Compartilhar no whatsapp" mat-icon-button>
+                                                <mat-icon>share</mat-icon>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>   
+                                <div (click)="deleteEvent(element._id)" matRipple class="button-delete">
+                                    <mat-icon  matTooltip="Deletar">delete</mat-icon>
+                                </div>                   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<section>
+    <div class="container-top pt-2 ps-3">
+        <div class="row mt-3 p-0 m-0">
+            <div class="col-auto">
+                <h2 class="text-light p-0 m-0 d-flex align-items-center">
+                    Consultas do dia
+                </h2>
+            </div>
+        </div>
+
+        <div class="container-consultas">
+            <div (click)="enterMeet(event.meet)" *ngFor="let event of dataSource" class="row p-0 m-0 mt-3">
+                <div class="col-auto">
+                    <p class=" text-light">
+                        {{event.data}}
+                    </p>
+                </div>
+                <div class="col-auto"> 
+                    <p class=" text-light">{{event.title}}</p>
+                </div>
+                <div class="col-auto">
+                    <p class=" text-light">{{event.time}}</p>
+                </div>
+
+                <div class="col-12">
+                    <mat-divider></mat-divider>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-bottom pt-5">
+        <div class="container">
+            <div routerLink="cadastro-cliente/{{loggedUser.crp}}" matRipple color="indigo" class="card p-3 d-flex">
+                <div class="row">
+                    <div class="col-auto d-flex align-items-center">
+                        <mat-icon class="text-primary">add</mat-icon>
+                    </div>
+                    <div class="col-auto text-primary">
+                        <h2 class="p-0 m-0">Adicionar novo cliente</h2>
+                    </div>
+                </div>
+            </div>
+
+            <div routerLink="/configuracoes" matRipple *ngIf="!loggedUser.chavePix" class="card p-3 d-flex mt-3">
+                <div class="row">
+                    <div class="col-auto d-flex align-items-center">
+                        <mat-icon class="text-primary">paid</mat-icon>
+                    </div>
+                    <div class="col-auto text-primary">
+                        <h2 class="p-0 m-0">Cadastrar chave PIX</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <app-menu></app-menu>
+</section>
+
+</mat-drawer-container>

@@ -1,0 +1,128 @@
+
+.container-full{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .card{
+        width: 535px;
+        padding: 1rem;
+
+        .mat-step-label{
+            min-width: 0;
+        }
+        
+    }
+    .logo{
+        width: 20px;
+    }
+
+    .card-img{
+        max-width: 50px;
+        padding: 1rem;
+    }
+    .subtitle{
+        color: #333;
+    }
+
+    form{
+        display: flex;
+        width: 100%;
+        height: 100%;
+        padding-top: 2rem;
+
+        .input-container{
+            width:calc(100% - 250px);
+            height: 300px ;
+            padding: 0 1rem;
+        }
+        
+        .perfil-container{
+            width: 250px;
+            height: 300px;
+            border: 1px solid rgb(233, 233, 233);
+            border-radius: 5px;
+            overflow: hidden;
+
+            .selected-image{
+                width: 250px;
+                height: 250px;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+
+            .input-file{
+                width: 100%;
+                height: 50px;
+                background: rgb(224, 224, 224);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                
+
+                label{
+                    cursor: pointer;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    width: 100%;
+                    height: 100%;
+
+                    mat-icon{
+                        margin-right: 10px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+// .container-full{
+//    max-width: 100vw;
+//     height: 100vh;
+
+//     .form{
+//         width: 100%;
+//         height: 100%;
+//         overflow-x: auto;
+
+//         strong{
+//             font-size: 30px;
+//             color: #333;
+//         }
+//     }
+// }
+
+// @media screen and (min-width: 1000px) {
+//     .container-full{
+//         width: 100vw;
+//         height: 100vh;
+//         display: flex;
+    
+//         .banner{
+//             width: 65%;
+//             height: 100%;
+//             background: #333;
+//             background-image: url(https://i.pinimg.com/originals/71/61/47/716147c1d036895b918f1fa6b8e2da37.jpg);
+//             background-size: cover;
+//         }
+    
+//         .form{
+//             width: 35%;
+//             height: 100%;
+//             padding: 1rem;
+//             overflow-x: auto;
+    
+//             strong{
+//                 font-size: 30px;
+//                 color: #333;
+//             }
+//         }
+//     }
+// }

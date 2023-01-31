@@ -1,0 +1,120 @@
+<app-toolbar [drawer]="drawer"></app-toolbar>
+
+<mat-drawer-container>
+    <mat-drawer #drawer>
+        <app-menu></app-menu>
+    </mat-drawer>
+    <div class="container-full">
+        <div class="row">
+            <div class="col-auto">
+                <h1>Veja todas as funções desta versão</h1>
+            </div>
+        </div>
+        <mat-accordion>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Receba por suas consultas
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="content">
+                    <div class="description d-flex">
+                        <img width="20%" style="border-radius: 20px;" src="assets/news/pix.png" class="me-3">
+                        <div class="text">
+                            <h1>É simples</h1>
+                            <p>Nas suas <strong>configurações</strong>, vá até chave pix e la cadastre sua chave. <br>
+                                Pronto, agora sempre que você encaminha o relatório para seu cliente, nele conterá <br>
+                                um QrCode e um código Copia e Cola para ele efetuar o pagamento.
+                            </p>
+
+                            <h2>Observações</h2>
+                            <p>As chaves aceitas são:</p>
+                            <ul>
+                                <li><strong>CPF/CNPJ</strong></li>
+                                <li><strong>E-mail</strong></li>
+                                <li><strong>Chave aleatória</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Faça suas teleconsultas sem sair do app
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="content">
+                    <div class="description d-flex">
+                        <img width="20%" style="border-radius: 20px;" src="assets/news/reuniao.png" class="me-3">
+                        <div class="text">
+                            <h1>Com apenas um clique</h1>
+                            <p>
+                                Ao criar um evento, <strong>automaticamente</strong> é criada uma sala para que ocorra a video chamada. <br>
+                                Tanto para você (psicologo), quanto para seu cliente, acessar é muito simples e basta apenas um clique. <br>
+                                Na descrição do evento conterá o link para que você encaminhe para seu cliente.
+                            </p>
+
+                            <h2>Observações</h2>
+                            <p>As chamadas estão limitadas a 2 participantes</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Acompanhe suas pendências
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="content">
+                    <div class="description d-flex">
+                        <img width="20%" style="border-radius: 20px;" src="assets/news/pendencia.png" class="me-3">
+                        <div class="text">
+                            <h1>Não deixe nada passar</h1>
+                            <p>
+                                Acompanhar o histórico e as pendências de suas consultas nunca foi tão fácil. <br>
+                                Nas seção <strong>Minhas finanças</strong> você consegue acompanhar quais consultas <br>
+                                individualmente contém alguma pendência, seja ela de pagamento ou não realizada.
+                            </p>
+
+                            <h2>Observações</h2>
+                            <p>Nenhuma observação</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Cadastre clientes rápidamente
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <div class="content">
+                    <div class="description d-flex">
+                        <img width="20%" style="border-radius: 20px;" src="assets/news/cadastro.png" class="me-3">
+                        <div class="text">
+                            <h1>Seu cliente também pode fazer isso por você</h1>
+                            <p>
+                                Nada impede de você copiar o link e cadastrar você mesmo, mas um diferêncial é que <br>
+                                agora você pode mandar o link para seu cliente cadastrar ele mesmo suas informações pessoais.
+                                Isso traz um conforto para você e uma sensação de segurança para ele.
+                            </p>
+
+                            <h2>Observações</h2>
+                            <p>Nenhuma observação</p>
+                            
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+
+        
+    </div>
+</mat-drawer-container>

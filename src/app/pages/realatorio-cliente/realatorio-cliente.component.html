@@ -1,0 +1,132 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<section>
+    <div class="options">
+        <div class="file-name">
+            <p class=" text-light p-0 m-0">{{cliente.nome}}_{{month}}_{{year}}.pdf</p>
+        </div>
+        <div class="buttons">
+           <button (click)="printPDF()" mat-icon-button>
+                <mat-icon class="text-light">download</mat-icon>
+           </button>
+        </div>
+    </div>
+    <div #pdf class="pdf-container">
+        <div class="ticket"></div>
+        <div class="top-info-container">
+            <div class="left">
+                <div class="row">
+                    <div class="col-auto">
+                        <h2 class="m-0 p-0">{{cliente.nome}}</h2>
+                        <p class="m-0 p-0">CPF: {{cliente.cpf | mask: '000.000.000-00'}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="contatos">
+                <h2 class="mt-3">Contatos</h2>
+                <p class="p-0 m-0">Email: {{cliente.email}}</p>
+                <p class="p-0 m-0">Celular: {{cliente.telefone}}</p>
+            </div>
+        </div>
+
+        <div class="table-container mt-4">
+            <div class="thead">
+                <div class="row">
+                    <div class="col-3">
+                        <p class="p-0 m-0">Data</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="p-0 m-0">Status</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="p-0 m-0">Pagamento</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="p-0 m-0">Valor</p>
+                    </div>
+                </div>
+            </div>
+            <div class="tbody">
+                <div *ngFor="let event of events" class="row">
+                    <div class="col-3">
+                        <p class="m-0 p-0">{{event.data}}</p>
+                    </div>
+                    <div class="col-3">
+                        <p *ngIf="event.realizado" class="m-0 p-0">Realizado</p>
+                        <p *ngIf="!event.realizado" class="m-0 p-0">Não realizado</p>
+                    </div>
+                    <div class="col-3">
+                        <p *ngIf="event.pago" class="m-0 p-0">Efetuado</p>
+                        <p *ngIf="!event.pago" class="m-0 p-0">Pendente</p>
+                    </div>
+                    <div class="col-3">
+                        <p class="m-0 p-0"> R$ {{event.valorConsulta}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-end mt-3">
+            <div style="width: 150px;" class="subtotal">
+                <div class="row justify-content-end">
+                    <div class="col-auto">
+                        Subtotal:
+                    </div>
+                    <div class="col-auto">
+                        R$ {{subtotal}}
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+        </div>
+        <div class="row justify-content-end mt-3">
+            <div style="width: 150px;" class="subtotal">
+                <div class="row justify-content-end">
+                    <div class="col-auto">
+                        Descontos:
+                    </div>
+                    <div class="col-auto">
+                        R$ {{descontos}}
+                    </div>
+                </div>
+                <mat-divider></mat-divider>
+            </div>
+        </div>
+        
+        <div class="total row justify-content-end mt-3">
+            <div class="col-2">
+                Total:
+            </div>
+            <div class="col-auto">
+                R$ {{totalEvents}}
+            </div>
+        </div>
+
+        <div class="row justify-content-between mt-5" *ngIf="userData.endereco">
+            <div class="col-auto mb-5">
+                {{userData.endereco.localidade}} 
+                {{atualDay}} de 
+                {{months[atualMonth]}} de 
+                {{atualYear}}
+            </div>
+            <div class="col-auto mb-2">
+                <h2 class="m-0 p-0">{{userData.nome}} {{userData.sobrenome}}</h2>
+                <p>CRP: {{userData.crp}}</p>
+            </div>
+        </div>
+        <mat-divider></mat-divider>
+
+        <div class="card p-2 mt-4">
+            <div class="qrcode">
+                <img [src]="pix.imgData" alt="">
+                <button (click)="updateMessage()" [cdkCopyToClipboard]="pix.brCode" mat-flat-button >{{message}}</button>
+            </div>
+            <div class="instrutions">
+                <h1>Pagamento com QRCode </h1>
+                <p>1 - Abra seu o app do seu banco</p>
+                <p>2 - Selecione pagar com QrCode</p>
+                <p>3 - Escaneie o QrCode e finalize o pagamento</p>
+            </div>
+        </div>
+    </div>
+    
+    
+</section>

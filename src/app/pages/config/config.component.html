@@ -1,0 +1,114 @@
+<!-- <div class="d-flex bg-dark">
+    <nav class="side-menu">
+        <app-menu></app-menu>
+    </nav>
+
+    <section class="container-full bg-light">
+        <h2>Meu Perfil</h2>
+        <div class="row">
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>Nome</mat-label>
+                    <input [readonly]="readonly"  [(ngModel)]="userData.nome" type="text" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>Sobrenome</mat-label>
+                    <input [readonly]="readonly"  [(ngModel)]="userData.sobrenome" type="text" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>Data de nascimento</mat-label>
+                    <input [readonly]="readonly"  mask="00/00/0000" [(ngModel)]="userData.dataNascimento" type="text" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>CPF</mat-label>
+                    <input [readonly]="readonly"  mask="000.000.000-00" [(ngModel)]="userData.cpf" type="text" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>CRP</mat-label>
+                    <input [readonly]="readonly"  [(ngModel)]="userData.crp" type="text" matInput>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <h4 class="mt-4">Dados de endereço</h4>
+        <div class="row">
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>CEP</mat-label>
+                    <input #cep (blur)="getCep(cep.value)" [readonly]="readonly"  [(ngModel)]="userData.endereco.cep" type="text" matInput mask="00000-000">
+                </mat-form-field>
+            </div>
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>Logradouro</mat-label>
+                    <input [readonly]="readonly"  [(ngModel)]="userData.endereco.logradouro" type="text" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>Número</mat-label>
+                    <input [readonly]="readonly"  [(ngModel)]="userData.endereco.numero" type="text" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>Complemento</mat-label>
+                    <input [readonly]="readonly"  [(ngModel)]="userData.endereco.complemento" type="text" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>Bairro</mat-label>
+                    <input [readonly]="readonly"  [(ngModel)]="userData.endereco.bairro" type="text" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>Cidade</mat-label>
+                    <input [readonly]="readonly"  [(ngModel)]="userData.endereco.localidade" type="text" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-auto">
+                <mat-form-field>
+                    <mat-label>Estado</mat-label>
+                    <input [readonly]="readonly"  [(ngModel)]="userData.endereco.uf" type="text" matInput>
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="mt-5 row">
+            <div class="col-auto">
+                <button *ngIf="readonly" [disabled]="!readonly"  (click)="readonly = false" class="btn btn-primary">Editar</button>
+                <button *ngIf="!readonly" [disabled]="readonly"  (click)="readonly = true" class="btn btn-danger">Cancelar</button>
+            </div>
+            <div class="col-auto">
+                <button (click)="updateUser()" [disabled]="readonly" class="btn btn-success">Salvar</button>
+            </div>
+        </div>
+    </section>
+</div> -->
+
+<app-toolbar [drawer]="drawer"></app-toolbar> 
+<mat-drawer-container mode="over">
+    <mat-drawer #drawer>
+        <app-menu></app-menu>
+    </mat-drawer>
+
+    <section>  
+       
+        <div class="container">
+            <app-configuracoes [data]="userData"></app-configuracoes>
+        </div>
+    </section>
+    <div class="mobile">
+        <app-menu></app-menu>
+    </div>
+</mat-drawer-container>

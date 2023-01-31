@@ -1,0 +1,392 @@
+<div class="container-full bg-dark">
+    <div class="card">
+        <mat-stepper linear>
+            <mat-step>
+                <div class="row mb-2">
+                    <div class="col-auto">
+                        <div class="card card-img">
+                            <img class="logo" src="/assets/icons/Flux Logo.png" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <h1 class="subtitle">Crie sua conta Flux</h1>
+                    </div>
+                </div>
+                <form [formGroup]="form">
+                    <ng-template matStepLabel>Dados pessoais</ng-template>
+                    <div class="perfil-container" >
+                        <div class="selected-image">
+                            <img [src]="form.value.perfilImage.url" alt="">
+                        </div>
+                        <div class="input-file">
+                            <input (change)="uploadImage($event)" style="display: none;" type="file" id="perfilimage">
+                            <label for="perfilimage">
+                                <mat-icon>upload</mat-icon>
+                                Escolha uma foto
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="row">
+                            <div class="col-auto">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Nome</mat-label>
+                                    <input formControlName="nome" matInput type="text">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-auto">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Sobrenome</mat-label>
+                                    <input matInput formControlName="sobrenome" type="text">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-auto">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Data de nascimento</mat-label>
+                                    <input type="text" matInput placeholder="dd/mm/aaaa" mask="00/00/0000" formControlName="dataNascimento">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-auto">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>CPF</mat-label>
+                                    <input type="text" matInput formControlName="cpf" placeholder="Digite somente números" mask="000.000.000-00">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row mt-4 justify-content-between">
+                    <div class="col-auto d-flex align-items-center">
+                        <a routerLink="/login">Já tem login? Entrar</a>
+                    </div>
+                    <div class="col-auto">
+                        <button color="primary" mat-flat-button matStepperNext>Próximo</button>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <div class="row mb-2">
+                    <div class="col-auto">
+                        <div class="card card-img">
+                            <img class="logo" src="/assets/icons/Flux Logo.png" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <h1 class="subtitle">Um pouco mais sobre você</h1>
+                    </div>
+                </div>
+                <form [formGroup]="form">
+                    <ng-template matStepLabel>Complemento</ng-template>
+                    <div class="perfil-container" >
+                        <div class="selected-image">
+                            <img [src]="form.value.perfilImage.url" alt="">
+                        </div>
+                        <div class="input-file">
+                            <input (change)="uploadImage($event)" style="display: none;" type="file" id="perfilimage">
+                            <label for="perfilimage">
+                                <mat-icon>upload</mat-icon>
+                                Escolha uma foto
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="row">
+                            <div class="col-auto">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>CRP</mat-label>
+                                    <input  type="text" matInput formControlName="crp" mask="00/0*" placeholder="Digite somente números">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-auto">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Chave PIX</mat-label>
+                                    <input  type="text" matInput formControlName="chavePix" placeholder="Não inclua traços ou pontos">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-auto">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Valor da consulta</mat-label>
+                                    <input type="text" matInput placeholder="Esse valor poderá ser alterado"  formControlName="valorConsultaPadrao">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row mt-4 justify-content-end">
+                    <div class="col-auto">
+                        <button mat-button matStepperPrevious>Voltar</button>
+                    </div>
+                    <div class="col-auto">
+                        <button  mat-flat-button color="primary" matStepperNext>Próximo</button>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <div class="row mb-2">
+                    <div class="col-auto">
+                        <div class="card card-img">
+                            <img class="logo" src="/assets/icons/Flux Logo.png" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <h1 class="subtitle">Qual sua localização</h1>
+                    </div>
+                </div>
+                <form [formGroup]="form">
+                    <ng-template matStepLabel>Endereço</ng-template>
+                    <div class="row d-flex justify-content-center" formGroupName="endereco">
+                        <div class="col-auto">
+                            <mat-form-field appearance="outline">
+                                <mat-label>CEP</mat-label>
+                                <input type="text" #cep matInput formControlName="cep" (blur)="getEndereco(cep.value)" mask="000.00-000">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-auto">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Logradouro</mat-label>
+                                <input type="text"  matInput  formControlName="logradouro">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-auto">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Número</mat-label>
+                                <input  type="text" matInput formControlName="numero">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-auto">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Complemento</mat-label>
+                                <input  type="text" matInput formControlName="complemento">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-auto">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Bairro</mat-label>
+                                <input type="text" matInput formControlName="bairro">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-auto">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Cidade</mat-label>
+                                <input type="text" matInput formControlName="localidade">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-auto">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Cidade</mat-label>
+                                <input type="text" matInput formControlName="localidade">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-auto">
+                            <mat-form-field appearance="outline">
+                                <mat-label>Estado</mat-label>
+                                <input type="text" matInput formControlName="uf">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </form>
+                <div class="row mt-4 justify-content-end">
+                    <div class="col-auto">
+                        <button mat-button matStepperPrevious>Voltar</button>
+                    </div>
+                    <div class="col-auto">
+                        <button  mat-flat-button color="primary" matStepperNext>Próximo</button>
+                    </div>
+                </div>
+            </mat-step>
+            <mat-step>
+                <div class="row mb-2">
+                    <div class="col-auto">
+                        <div class="card card-img">
+                            <img class="logo" src="/assets/icons/Flux Logo.png" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-auto">
+                        <h1 class="subtitle p-0 m-0">Bem-vindo a Flux</h1>
+                        <p class="text-secondary">Conclua seu cadastro</p>
+                    </div>
+                </div>
+                <form [formGroup]="form">
+                    <ng-template matStepLabel>Conta</ng-template>
+                    <div class="perfil-container" >
+                        <div class="selected-image">
+                            <img [src]="form.value.perfilImage.url" alt="">
+                        </div>
+                        <div class="input-file">
+                            <input (change)="uploadImage($event)" style="display: none;" type="file" id="perfilimage">
+                            <label for="perfilimage">
+                                <mat-icon>upload</mat-icon>
+                                Escolha uma foto
+                            </label>
+                        </div>
+                    </div>
+                    <div class="input-container">
+                        <div class="row">
+                            <div class="col-auto">
+                                <mat-form-field appearance="outline">
+                                    <mat-hint *ngIf="error.error" class="text-danger">{{error.message}}</mat-hint>
+                                    <mat-label>Email</mat-label>
+                                    <input  type="email" matInput placeholder="Digite seu email" formControlName="email">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-auto">
+                                <mat-form-field appearance="outline">
+                                    <mat-label>Senha</mat-label>
+                                    <input type="password" matInput placeholder="Digite sua senha" formControlName="senha">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-auto">
+                                <mat-form-field appearance="outline">
+                                    <mat-hint *ngIf="error.password" class="text-danger">{{error.message}}</mat-hint>
+                                    <mat-label>Confirme a senha</mat-label>
+                                    <input (keyup)="checkSenha()" type="password" matInput placeholder="Digite sua senha" formControlName="confirmSenha">
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="row mt-4 justify-content-end">
+                    <div class="col-auto">
+                        <button mat-button matStepperPrevious>Voltar</button>
+                    </div>
+                    <div class="col-auto">
+                        <button (click)="addNewUser()" [disabled]="!form.valid" mat-flat-button color="primary" matStepperNext>Cadastrar</button>
+                    </div>
+                </div>
+            </mat-step>
+        </mat-stepper>
+    </div>
+</div>
+
+<!-- <div class="container-full" [formGroup]="form">
+    <div class="banner"></div>
+    <div class="form">
+        <strong>Cadastre-se agora</strong>
+
+        <h4 class="mt-4 mb-1">Dados pessoais</h4>
+        <div class="row  mb-1">
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nome</mat-label>
+                    <input type="text" matInput formControlName="nome" placeholder="Digite seu primeiro nome">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Sobrenome</mat-label>
+                    <input type="text" matInput formControlName="sobrenome"  placeholder="Digite seu sobrenome">
+                </mat-form-field>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="col-6">
+                
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>CRP</mat-label>
+                    <input  type="text" matInput formControlName="crp" mask="00/0*" placeholder="Digite somente números">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Chave PIX</mat-label>
+                    <input  type="text" matInput formControlName="chavePix" placeholder="Não inclua traços ou pontos">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Data de nascimento</mat-label>
+                    <input type="text" matInput placeholder="dd/mm/aaaa" mask="00/00/0000" formControlName="dataNascimento">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Valor da consulta</mat-label>
+                    <input type="text" matInput placeholder="Esse valor poderá ser alterado"  formControlName="valorConsultaPadrao">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <h4 class="mt-4 mb-1">Dados de endereço</h4>
+        <div class="row" formGroupName="endereco">
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>CEP</mat-label>
+                    <input type="text" #cep matInput formControlName="cep" (blur)="getEndereco(cep.value)" mask="000.00-000">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Logradouro</mat-label>
+                    <input type="text"  matInput  formControlName="logradouro">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Número</mat-label>
+                    <input  type="text" matInput formControlName="numero">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Complemento</mat-label>
+                    <input  type="text" matInput formControlName="complemento">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Bairro</mat-label>
+                    <input type="text" matInput formControlName="bairro">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Cidade</mat-label>
+                    <input type="text" matInput formControlName="localidade">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Estado</mat-label>
+                    <input type="text" matInput formControlName="uf">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <h4 class="mt-4 mb-1">Dados de acesso</h4>
+        <div class="row">
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-hint *ngIf="error.error" class="text-danger">{{error.message}}</mat-hint>
+                    <mat-label>Email</mat-label>
+                    <input  type="email" matInput placeholder="Digite seu email" formControlName="email">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field appearance="outline">
+                    <mat-label>Senha</mat-label>
+                    <input type="password" matInput placeholder="Digite sua senha" formControlName="senha">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="row mt-3">
+            <div class="col-12">
+                <button (click)="addNewUser()"  [disabled]="!form.valid" style="width: 100%;" class="btn btn-outline-success">Cadastrar</button>
+            </div>
+        </div>
+    </div>
+</div> -->

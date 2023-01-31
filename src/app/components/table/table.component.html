@@ -1,0 +1,37 @@
+<div class="content">
+    <div class="search">
+        <input placeholder="Pesquise por um cliente" type="text">
+        <div class="button-search">
+            <button mat-icon-button>
+                <mat-icon>search</mat-icon>
+            </button>
+        </div>
+    </div>
+    
+    <div class="table">
+        <div *ngFor="let element of dataSource" class="cell">
+            <div class="row justify-content-between">
+                <div class="col-auto">
+                    <div class="row">
+                        <div class="col-auto">
+                            <img class="perfilImage" [src]="element.perfilImage.url" alt="">
+                        </div>
+                        <div class="col-auto">
+                            <h2 class=" p-0 m-0">{{element.nome}}</h2>
+                            <p class=" p-0 m-0">{{element.email}}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-auto d-flex align-items-center">
+                    <button [matMenuTriggerFor]="menu" mat-icon-button>
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>
+<mat-menu #menu="matMenu">
+
+</mat-menu>

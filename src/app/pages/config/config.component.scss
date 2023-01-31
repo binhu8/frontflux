@@ -1,0 +1,17 @@
+section{
+    height: calc(100vh - 64px);
+    .container{
+        height: 100%;
+        overflow-x: auto;
+    }
+}
+
+.mobile{
+    display: none;
+}
+
+@media screen and(max-width: 800px){
+    .mobile{
+        display: block;
+    }
+}

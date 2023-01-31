@@ -1,0 +1,34 @@
+<div class="container-modal" [formGroup]="form">
+    <h1>Dados do atendimento</h1>
+    <div class="row ">
+        <div class="col-auto">
+            <mat-form-field appearance="fill">
+                <mat-label>Data</mat-label>
+                <input matInput formControlName="date" [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field> 
+        </div>
+        <div class="col-auto">
+            <mat-form-field appearance="fill">
+                <mat-label>Horario</mat-label>
+                <input formControlName="time" type="time" matInput>
+            </mat-form-field>
+        </div>
+        <div class="col-auto">
+            <mat-form-field appearance="fill">
+                <mat-label>Cliente</mat-label>
+                <input type="text" matInput formControlName="title">
+            </mat-form-field>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-auto">
+            <button (click)="addNewEvent()" class="btn btn-primary">Adicionar</button>
+        </div>
+        <div class="col-auto">
+            <button (click)="cancel()" class="btn btn-danger">Cancelar</button>
+        </div>
+    </div>
+</div>

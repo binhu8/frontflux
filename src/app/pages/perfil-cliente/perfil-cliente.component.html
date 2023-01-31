@@ -1,0 +1,82 @@
+
+
+<mat-drawer-container mode="over">
+    <mat-drawer #drawer >
+        <app-menu></app-menu>
+    </mat-drawer>
+    <app-toolbar [drawer]="drawer" ></app-toolbar>
+    <section class="d-flex">
+        <div class="container-full">
+            
+            <div class="info-client">
+                <div class="row mb-3 m-0 justify-content-start">
+                    <button style="width: 100px ;" routerLink="/meus-clientes" mat-button>
+                        <mat-icon >arrow_back</mat-icon>
+                        Voltar
+                    </button>
+                </div> 
+                <div class="profile">
+                    <div class="container-img">
+                        {{initialName}}
+                    </div>
+                    <div class="descriptions">
+                        <h4 class="p-0 mb-1" >{{userData.nome}}</h4>
+                        <div class="location">
+                            <span>
+                                <mat-icon class="birth">event</mat-icon>
+                                {{userData.dataNascimento}} 
+                                
+                                ( {{idade}} Anos ) 
+                            </span>
+                            <div class="point"></div>
+                            <span>
+                                {{userData.endereco.logradouro}},
+                                {{userData.endereco.numero}},
+                                {{userData.endereco.complemento ? userData.endereco.complemento : '' }},
+                                {{userData.endereco.bairro}},
+                                {{userData.endereco.localidade}} - 
+                                {{userData.endereco.uf}} 
+                                <mat-icon> location_on </mat-icon>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="contacts mt-3">
+                    <div class="row">
+                        <div class="col-auto">
+                            <div class="card p-1">
+                                <span>
+                                    <mat-icon>mail</mat-icon>
+                                    {{userData.email}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="card p-1">
+                                <span>
+                                    <mat-icon>call</mat-icon>
+                                    {{userData.telefone | mask: '(00) 00000-0000'}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="card p-1">
+                                <span>
+                                    <mat-icon>emergency</mat-icon>
+                                    {{userData.contatoEmergencia.numero | mask: '(00) 00000-0000'}}
+                                    ({{userData.contatoEmergencia.nome}})
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <mat-divider></mat-divider>
+            <app-tabs [cliente]="userData" [eventsClient]="dataSource" [userData]="userData" class="mt-2"></app-tabs>
+        </div>
+    </section>
+    <div class="mobile">
+        <app-menu></app-menu>
+    </div>
+
+</mat-drawer-container>

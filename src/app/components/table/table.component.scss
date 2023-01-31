@@ -1,0 +1,60 @@
+.search{
+    width: 100%;
+    display: flex;
+    border: 1px solid #48CAE4;
+    border-radius: 20px;
+    overflow: hidden;
+    padding: 1rem;
+    align-items: center;
+
+    input{
+        width: 100%;
+        height: 100%;
+        outline: none;
+        border: none;
+    }
+    .button-search{
+        display: flex;
+        justify-content: center;
+        align-items: center ;
+    }
+}
+
+.table{
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    padding-top: 1rem;
+    margin-top: 10px;
+
+    .cell{
+        width: 100%;
+        padding: 2rem;
+        background: #48CAE4;
+        margin: 5px 0;
+        color: #fff;
+
+        .perfilImage{
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+        }
+    }
+
+    .cell:nth-child(even){
+        background-color: #fff;
+        border: 1px solid #48CAE4;
+        color: rgb(104, 103, 103);
+    }
+
+
+}
+
+.content{
+    height: 100%;
+    padding: 1rem;
+}
+
+.table::-webkit-scrollbar{
+    display: none;
+}

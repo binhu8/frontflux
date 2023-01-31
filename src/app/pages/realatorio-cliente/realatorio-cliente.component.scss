@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Montserrat:wght@800&family=Oswald:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600&family=Sono:wght@400;500;700&display=swap');
+
+*{
+    font-family: 'Oswald';
+}
+section{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow-y: auto;
+    position: relative;
+
+    .options{
+        width: 100%;
+        height: 40px;
+        background-color: rgba(0, 0, 0, 0.582);
+        position: fixed;
+        z-index: 200;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .pdf-container{
+        width: 100%;
+        padding: 0 1rem;
+        position: relative;
+
+        .ticket{
+            width: 90px;
+            height: 10px;
+            background: linear-gradient(to top left, #656578, #434a54);
+        }
+
+        .top-info-container{
+            .left{
+                .row{
+                    .col-auto{
+                        color: #434a54;
+                        h2{
+                            font-family: 'Oswald';
+                            font-weight: 600;
+                            font-size: 1rem;
+                        }
+                        p{
+                            font-family: 'Oswald';
+                            color: #656578;
+                        }
+                    }
+                }
+            }
+            .contatos{
+                h2{
+                    margin: 0;
+                    padding: 0;
+                    font-family: 'Oswald';
+                    color: #434a54;
+                    font-size: 0.8rem;
+                }
+                p{
+                    font-size: 0.7rem;
+                    color: #656578;
+                }
+            }
+
+        }
+
+        .table-container{
+            .thead{
+                .row{
+                    background: #434a54;
+                    color: #fff;
+                    padding: 0.5rem;
+                    font-size: 0.7rem;
+                }
+            }
+            .tbody{
+                .row{
+                    padding: 0.5rem;
+                    color: #656578;
+                    font-size: 0.7rem;
+                }
+                .row:nth-child(even){
+                    background: #a6a6b30e;
+                }
+            }
+        }
+
+        .total{
+            .col-2, .col-auto{
+                padding: 0.5rem;
+                background: #434a54;
+                color: #fafafa;
+            }
+        }
+
+        .card{
+            display: flex;
+            flex-direction: row  ;
+
+            .qrcode{
+                display: flex;
+                flex-direction: column;
+                width: 150px;
+                margin-right: 10px;
+            }
+
+            .instrutions{
+                p{
+                    margin: 0;
+                    padding: 0;
+                }
+            }
+
+        }
+        
+    }
+
+    
+}
+
+@media  screen and(min-width: 1000px) {
+    section{
+        display: flex;
+        height: auto;
+        align-items: center;
+        flex-direction: column;
+        background: #434a54;
+        overflow: auto;
+        padding: 2rem;
+        overflow-x: hidden;
+
+        .options{
+            width: 100%;
+            height: 40px;
+            background-color: rgba(0, 0, 0, 0.582);
+            position: fixed;
+            z-index: 200;
+            top: 0;
+            left: 0;
+            padding: 0 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .pdf-container{
+            width: 21cm;
+            height: 29.7cm;
+            background: #fff;
+            border-radius: 3px;
+            
+        }
+    }
+}

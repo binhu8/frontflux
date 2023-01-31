@@ -1,0 +1,72 @@
+section{
+    display: flex;
+    width: 100vw;
+    height: calc(100vh - 65px);
+}
+
+.mobile{
+    display: none;
+}
+
+.container-full{
+    width: 100%;
+    overflow-x: hidden;
+}
+
+.myChart{
+    width: 60%;
+}
+
+.cards{
+    h1{
+        display: flex;
+        align-items: center;
+        margin-right: 2rem;
+        mat-icon{
+            margin-right: 10px ;
+        }
+    }
+}
+
+
+
+.percent{
+    border: 1px solid gray;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    h4{
+        font-size: 13px;
+    }
+    mat-icon{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 15px;
+    }
+}
+
+@media screen  and(max-width: 1300px){
+    section{
+        
+
+        .container-full{
+            height: 100%;
+            width: 100vw;
+        }
+    }
+}
+
+@media screen and(max-width: 800px){
+    .mobile{
+        display: block;
+    }
+    section{
+        height: calc(100vh - 130px);
+    }
+
+    .myChart{
+        width: 100%;
+    }
+}

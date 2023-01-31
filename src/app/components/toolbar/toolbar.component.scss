@@ -1,0 +1,41 @@
+mat-toolbar{
+    justify-content: space-between;
+    background: #fff;
+    border-bottom: 1px solid #48cae456;
+    height: 60px;
+
+    .item.active{
+        color: #48CAE4;
+        position: relative;
+        display: flex;
+        justify-content: center;
+    }
+
+
+    .item{
+        cursor: pointer;
+        font-weight: 300;
+        color: #747474;
+        transition: 0.3s;
+        font-size: 1rem
+    }
+
+    .item:hover{
+        color: #0f2027;
+        transition: 0.4s;
+    }
+}
+
+
+
+
+
+@media screen and(max-width: 800px) {
+    mat-toolbar{
+        justify-content: flex-end;
+        background: linear-gradient(to top left, #0f2027, #203a43, #2c5364);
+    }
+    .web{
+        display: none;
+    }
+}

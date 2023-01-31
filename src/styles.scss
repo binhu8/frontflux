@@ -1,0 +1,70 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '~@angular/material' as mat;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400&family=Work+Sans:wght@100;200;300;400;500;600;700&display=swap');
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$Psico-Manager-primary: mat.define-palette(mat.$indigo-palette);
+$Psico-Manager-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$Psico-Manager-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$Psico-Manager-theme: mat.define-light-theme((
+  color: (
+    primary: $Psico-Manager-primary,
+    accent: $Psico-Manager-accent,
+    warn: $Psico-Manager-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($Psico-Manager-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.fc .fc-scrollgrid-section-body table, .fc .fc-scrollgrid-section-footer table {
+  background: #fff;
+  text-decoration: none;
+}
+
+.fc a{
+  text-decoration: none;
+}
+
+.fc .fc-daygrid-day-frame{
+  border: 1px solid rgba(202, 202, 202, 0.075);
+}
+
+.fc .fc-timegrid-slot{
+  border: 1px solid rgba(202, 202, 202, 0.192);
+}
+
+.fc td, .fc th{
+  border: 1px solid rgba(202, 202, 202, 0.192); ;
+}
+
+.mat-step-header .mat-step-label{
+  min-width: 0;
+}
+
+.mat-horizontal-stepper-header-container{
+  display: none !important;
+}

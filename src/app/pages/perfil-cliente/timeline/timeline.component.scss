@@ -1,0 +1,35 @@
+
+
+span{
+    display: flex;
+    align-items: center;
+    color: #a0a0a0;
+
+    mat-icon{
+        font-size: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+.pago{
+    color: #1aa81a;
+}
+.devedor{
+    color: #f36262;
+}
+
+mat-form-field{
+    width: 100%;
+
+    textarea{
+        height: auto;
+    }
+}
+
+
+
+// .mat-expansion-panel-header-description{
+//     justify-content: space-between;
+// }

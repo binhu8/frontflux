@@ -1,0 +1,8 @@
+<div class="content">
+    <input [(ngModel)]="searchContent" (keyup)="filter()" type="text" placeholder="Pesquise por um cliente">
+    <div *ngIf="searchContent" class="content-search">
+        <div (click)="setValue(element)" *ngFor="let element of optionsFilter" class="item">
+            {{element.nome}}
+        </div>
+    </div>
+</div>
